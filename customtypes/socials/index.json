@@ -1,0 +1,75 @@
+{
+	"format": "custom",
+	"id": "socials",
+	"label": "Socials",
+	"repeatable": false,
+	"status": true,
+	"json": {
+		"Main": {
+			"socials": {
+				"type": "Text",
+				"config": {
+					"label": "Socials",
+					"placeholder": ""
+				}
+			},
+			"meta_description": {
+				"type": "Text",
+				"config": {
+					"label": "Meta description",
+					"placeholder": ""
+				}
+			},
+			"og_image": {
+				"type": "Image",
+				"config": {
+					"label": "OG Image",
+					"constraint": {},
+					"thumbnails": []
+				}
+			},
+			"social_media": {
+				"type": "Group",
+				"config": {
+					"label": "social media",
+					"repeat": true,
+					"fields": {
+						"link": {
+							"type": "Link",
+							"config": {
+								"label": "Link",
+								"placeholder": "",
+								"allowTargetBlank": false,
+								"select": null
+							}
+						},
+						"label": {
+							"type": "Text",
+							"config": {
+								"label": "Label",
+								"placeholder": ""
+							}
+						},
+						"cta": {
+							"type": "Boolean",
+							"config": {
+								"label": "CTA",
+								"default_value": false,
+								"placeholder_true": "true",
+								"placeholder_false": "false"
+							}
+						},
+						"logo": {
+							"type": "Image",
+							"config": {
+								"label": "Logo",
+								"constraint": {},
+								"thumbnails": []
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

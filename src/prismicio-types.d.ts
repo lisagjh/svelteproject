@@ -179,7 +179,117 @@ export type SettingsDocument<Lang extends string = string> = prismic.PrismicDocu
 	Lang
 >;
 
-export type AllDocumentTypes = PageDocument | SettingsDocument;
+/**
+ * Item in *Socials → social media*
+ */
+export interface SocialsDocumentDataSocialMediaItem {
+	/**
+	 * Link field in *Socials → social media*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: socials.social_media[].link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
+
+	/**
+	 * Label field in *Socials → social media*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: socials.social_media[].label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField;
+
+	/**
+	 * CTA field in *Socials → social media*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: socials.social_media[].cta
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	cta: prismic.BooleanField;
+
+	/**
+	 * Logo field in *Socials → social media*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: socials.social_media[].logo
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	logo: prismic.ImageField<never>;
+}
+
+/**
+ * Content for Socials documents
+ */
+interface SocialsDocumentData {
+	/**
+	 * Socials field in *Socials*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: socials.socials
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	socials: prismic.KeyTextField;
+
+	/**
+	 * Meta description field in *Socials*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: socials.meta_description
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_description: prismic.KeyTextField;
+
+	/**
+	 * OG Image field in *Socials*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: socials.og_image
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	og_image: prismic.ImageField<never>;
+
+	/**
+	 * social media field in *Socials*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: socials.social_media[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	social_media: prismic.GroupField<Simplify<SocialsDocumentDataSocialMediaItem>>;
+}
+
+/**
+ * Socials document from Prismic
+ *
+ * - **API ID**: `socials`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SocialsDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+	Simplify<SocialsDocumentData>,
+	'socials',
+	Lang
+>;
+
+export type AllDocumentTypes = PageDocument | SettingsDocument | SocialsDocument;
 
 /**
  * Primary content in *RichText → Default → Primary*
@@ -239,6 +349,9 @@ declare module '@prismicio/client' {
 			SettingsDocument,
 			SettingsDocumentData,
 			SettingsDocumentDataNavigationItem,
+			SocialsDocument,
+			SocialsDocumentData,
+			SocialsDocumentDataSocialMediaItem,
 			AllDocumentTypes,
 			RichTextSlice,
 			RichTextSliceDefaultPrimary,

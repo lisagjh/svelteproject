@@ -9,7 +9,7 @@
 
 <header>
 	<nav
-		class="flex flex-row items-center justify-between gap-6 border-t border-gray-600 px-5 py-3 md:flex-row"
+		class="flex flex-row items-center justify-between gap-6 px-5 py-3 md:flex-row"
 		aria-label="Main"
 	>
 		<a href="/">
